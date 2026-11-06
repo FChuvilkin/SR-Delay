@@ -1,0 +1,275 @@
+[server] http://localhost:4321  region=US  body hold=3000ms  image delay=5000ms
+[runner] using installed Google Chrome
+
+=== 1-fast #1  /?scenario=fast
+[collect] page_view device=sr-test-fast-1793972062308 time=1793972062308 -> 200 {"code":200,"server_upload_time":1793972062886,"payload_size_bytes":381,"events_ingested":1}
+[collect] page_timing device=sr-test-fast-1793972062308 time=1793972062405 -> 200 {"code":200,"server_upload_time":1793972062964,"payload_size_bytes":500,"events_ingested":1}
+[collect] amplitude_session_replay device=sr-test-fast-1793972062308 time=1793972062455 -> 200 {"code":200,"server_upload_time":1793972063002,"payload_size_bytes":568,"events_ingested":1}
+  device=sr-test-fast-1793972062308 session=1793972062308
+  page 1: promise_resolved=161ms (complete)  amplitude_session_replay=161ms  DCL=111ms  load=112ms
+  sdk@393ms: Amplitude Logger [Debug]: Session Replay remote configuration received from remote: {}
+  sdk@396ms: Amplitude Logger [Log]: Session Replay capture stopping.
+  sdk@396ms: Amplitude Logger [Debug]: Not able to add custom replay capture event get-sr-props due to no ongoing recording.
+  sdk@396ms: [repro] promise_resolved @161ms readyState=complete {"ready_state_at_resolve":"complete","sr_props":{"[Amplitude] Session Replay ID":"sr-tes
+  sdk@398ms: Amplitude Logger [Log]: Session Replay capture beginning for 1793972062308.
+  sdk@2174ms: Amplitude Logger [Log]: Session replay event batch tracked successfully for session id 1793972062308, size of events: 5 KB
+  replay uploads: 6 (first at 1350ms, 6 events)
+  httpapi: page_view time=1793972062308 -> 200
+  httpapi: page_timing time=1793972062405 -> 200
+  httpapi: amplitude_session_replay time=1793972062455 -> 200
+  -> results/1-fast-sr-test-fast-1793972062308.json
+
+=== 2a-slow-stay #1  /?scenario=slow
+[collect] page_view device=sr-test-slow-1793972077580 time=1793972077580 -> 200 {"code":200,"server_upload_time":1793972077732,"payload_size_bytes":380,"events_ingested":1}
+[collect] amplitude_session_replay device=sr-test-slow-1793972077580 time=1793972077731 -> 200 {"code":200,"server_upload_time":1793972077894,"payload_size_bytes":566,"events_ingested":1}
+[collect] page_timing device=sr-test-slow-1793972077580 time=1793972085604 -> 200 {"code":200,"server_upload_time":1793972085755,"payload_size_bytes":506,"events_ingested":1}
+  device=sr-test-slow-1793972077580 session=1793972077580
+  page 1: promise_resolved=158ms (loading)  amplitude_session_replay=158ms  DCL=3016ms  load=8009ms
+  sdk@369ms: Amplitude Logger [Debug]: Session Replay remote configuration received from remote: {}
+  sdk@371ms: Amplitude Logger [Log]: Session Replay capture stopping.
+  sdk@372ms: Amplitude Logger [Debug]: Not able to add custom replay capture event get-sr-props due to no ongoing recording.
+  sdk@372ms: [repro] promise_resolved @158ms readyState=loading {"ready_state_at_resolve":"loading","sr_props":{"[Amplitude] Session Replay ID":"sr-test-
+  sdk@372ms: Amplitude Logger [Log]: Session Replay capture beginning for 1793972077580.
+  sdk@9104ms: Amplitude Logger [Log]: Session replay event batch tracked successfully for session id 1793972077580, size of events: 0 KB
+  replay uploads: 6 (first at 8255ms, 1 events)
+  httpapi: page_view time=1793972077580 -> 200
+  httpapi: amplitude_session_replay time=1793972077731 -> 200
+  httpapi: page_timing time=1793972085604 -> 200
+  -> results/2a-slow-stay-sr-test-slow-1793972077580.json
+
+=== 2b-slow-leave #1  /?scenario=slow&leaveAt=3000
+[collect] page_view device=sr-test-slow-1793972097789 time=1793972097789 -> 200 {"code":200,"server_upload_time":1793972097941,"payload_size_bytes":393,"events_ingested":1}
+[collect] amplitude_session_replay device=sr-test-slow-1793972097789 time=1793972097951 -> 200 {"code":200,"server_upload_time":1793972098117,"payload_size_bytes":579,"events_ingested":1}
+  closed tab at 3203 ms
+  device=sr-test-slow-1793972097789 session=1793972097789
+  page 1: promise_resolved=170ms (loading)  amplitude_session_replay=170ms  DCL=3022ms  load=-
+  sdk@342ms: Amplitude Logger [Debug]: Session Replay remote configuration received from remote: {}
+  sdk@345ms: Amplitude Logger [Log]: Session Replay capture stopping.
+  sdk@345ms: Amplitude Logger [Debug]: Not able to add custom replay capture event get-sr-props due to no ongoing recording.
+  sdk@345ms: [repro] promise_resolved @170ms readyState=loading {"ready_state_at_resolve":"loading","sr_props":{"[Amplitude] Session Replay ID":"sr-test-
+  sdk@346ms: Amplitude Logger [Log]: Session Replay capture beginning for 1793972097789.
+  replay uploads: 0
+  httpapi: page_view time=1793972097789 -> 200
+  httpapi: amplitude_session_replay time=1793972097951 -> 200
+  -> results/2b-slow-leave-sr-test-slow-1793972097789.json
+
+=== 2c-slow-next #1  /?scenario=slow&leaveAt=3000&next=1
+[collect] page_view device=sr-test-slow-1793972101009 time=1793972101009 -> 200 {"code":200,"server_upload_time":1793972101163,"payload_size_bytes":400,"events_ingested":1}
+[collect] amplitude_session_replay device=sr-test-slow-1793972101009 time=1793972101160 -> 200 {"code":200,"server_upload_time":1793972101327,"payload_size_bytes":586,"events_ingested":1}
+[collect] page_view device=sr-test-slow-1793972101009 time=1793972104039 -> 200 {"code":200,"server_upload_time":1793972104189,"payload_size_bytes":391,"events_ingested":1}
+[collect] page_timing device=sr-test-slow-1793972101009 time=1793972104050 -> 200 {"code":200,"server_upload_time":1793972104215,"payload_size_bytes":507,"events_ingested":1}
+  device=sr-test-slow-1793972101009 session=1793972101009
+  page 1: promise_resolved=158ms (loading)  amplitude_session_replay=158ms  DCL=3022ms  load=-
+  page 2: promise_resolved=27ms (complete)  amplitude_session_replay=guard_blocked  DCL=25ms  load=25ms
+  sdk@291ms: Amplitude Logger [Debug]: Session Replay remote configuration received from remote: {}
+  sdk@295ms: Amplitude Logger [Log]: Session Replay capture stopping.
+  sdk@295ms: Amplitude Logger [Debug]: Not able to add custom replay capture event get-sr-props due to no ongoing recording.
+  sdk@295ms: [repro] promise_resolved @158ms readyState=loading {"ready_state_at_resolve":"loading","sr_props":{"[Amplitude] Session Replay ID":"sr-test-
+  sdk@295ms: Amplitude Logger [Log]: Session Replay capture beginning for 1793972101009.
+  sdk@3183ms: Amplitude Logger [Debug]: Session Replay remote configuration received from cache: {}
+  replay uploads: 6 (first at 3693ms, 6 events)
+  httpapi: page_view time=1793972101009 -> 200
+  httpapi: amplitude_session_replay time=1793972101160 -> 200
+  httpapi: page_view time=1793972104039 -> 200
+  httpapi: page_timing time=1793972104050 -> 200
+  -> results/2c-slow-next-sr-test-slow-1793972101009.json
+
+=== 3-slow-fix #1  /?scenario=slow&fix=1
+[collect] page_view device=sr-test-slow-1793972119194 time=1793972119194 -> 200 {"code":200,"server_upload_time":1793972119344,"payload_size_bytes":386,"events_ingested":1}
+[collect] page_timing device=sr-test-slow-1793972119194 time=1793972127214 -> 200 {"code":200,"server_upload_time":1793972127363,"payload_size_bytes":513,"events_ingested":1}
+[collect] amplitude_session_replay device=sr-test-slow-1793972119194 time=1793972127253 -> 200 {"code":200,"server_upload_time":1793972127431,"payload_size_bytes":573,"events_ingested":1}
+  device=sr-test-slow-1793972119194 session=1793972119194
+  page 1: promise_resolved=146ms (loading)  amplitude_session_replay=8066ms  DCL=3007ms  load=8009ms
+  sdk@300ms: Amplitude Logger [Debug]: Session Replay remote configuration received from remote: {}
+  sdk@303ms: Amplitude Logger [Log]: Session Replay capture stopping.
+  sdk@304ms: Amplitude Logger [Debug]: Not able to add custom replay capture event get-sr-props due to no ongoing recording.
+  sdk@304ms: [repro] promise_resolved @146ms readyState=loading {"ready_state_at_resolve":"loading","sr_props":{"[Amplitude] Session Replay ID":"sr-test-
+  sdk@304ms: Amplitude Logger [Log]: Session Replay capture beginning for 1793972119194.
+  sdk@9030ms: Amplitude Logger [Log]: Session replay event batch tracked successfully for session id 1793972119194, size of events: 0 KB
+  replay uploads: 6 (first at 8193ms, 1 events)
+  httpapi: page_view time=1793972119194 -> 200
+  httpapi: page_timing time=1793972127214 -> 200
+  httpapi: amplitude_session_replay time=1793972127253 -> 200
+  -> results/3-slow-fix-sr-test-slow-1793972119194.json
+
+=== 1-fast #2  /?scenario=fast
+[collect] page_view device=sr-test-fast-1793972139509 time=1793972139509 -> 200 {"code":200,"server_upload_time":1793972139675,"payload_size_bytes":381,"events_ingested":1}
+[collect] page_timing device=sr-test-fast-1793972139509 time=1793972139614 -> 200 {"code":200,"server_upload_time":1793972139776,"payload_size_bytes":500,"events_ingested":1}
+[collect] amplitude_session_replay device=sr-test-fast-1793972139509 time=1793972139664 -> 200 {"code":200,"server_upload_time":1793972139814,"payload_size_bytes":568,"events_ingested":1}
+  device=sr-test-fast-1793972139509 session=1793972139509
+  page 1: promise_resolved=167ms (complete)  amplitude_session_replay=167ms  DCL=117ms  load=117ms
+  sdk@444ms: Amplitude Logger [Debug]: Session Replay remote configuration received from remote: {}
+  sdk@447ms: Amplitude Logger [Log]: Session Replay capture stopping.
+  sdk@447ms: Amplitude Logger [Debug]: Not able to add custom replay capture event get-sr-props due to no ongoing recording.
+  sdk@448ms: [repro] promise_resolved @167ms readyState=complete {"ready_state_at_resolve":"complete","sr_props":{"[Amplitude] Session Replay ID":"sr-tes
+  sdk@449ms: Amplitude Logger [Log]: Session Replay capture beginning for 1793972139509.
+  sdk@1767ms: Amplitude Logger [Log]: Session replay event batch tracked successfully for session id 1793972139509, size of events: 5 KB
+  replay uploads: 6 (first at 950ms, 6 events)
+  httpapi: page_view time=1793972139509 -> 200
+  httpapi: page_timing time=1793972139614 -> 200
+  httpapi: amplitude_session_replay time=1793972139664 -> 200
+  -> results/1-fast-sr-test-fast-1793972139509.json
+
+=== 2a-slow-stay #2  /?scenario=slow
+[collect] page_view device=sr-test-slow-1793972154764 time=1793972154764 -> 200 {"code":200,"server_upload_time":1793972154917,"payload_size_bytes":381,"events_ingested":1}
+[collect] amplitude_session_replay device=sr-test-slow-1793972154764 time=1793972154921 -> 200 {"code":200,"server_upload_time":1793972155085,"payload_size_bytes":566,"events_ingested":1}
+[collect] page_timing device=sr-test-slow-1793972154764 time=1793972162784 -> 200 {"code":200,"server_upload_time":1793972162934,"payload_size_bytes":506,"events_ingested":1}
+  device=sr-test-slow-1793972154764 session=1793972154764
+  page 1: promise_resolved=169ms (loading)  amplitude_session_replay=169ms  DCL=3024ms  load=8011ms
+  sdk@371ms: Amplitude Logger [Debug]: Session Replay remote configuration received from remote: {}
+  sdk@374ms: Amplitude Logger [Log]: Session Replay capture stopping.
+  sdk@375ms: Amplitude Logger [Debug]: Not able to add custom replay capture event get-sr-props due to no ongoing recording.
+  sdk@375ms: [repro] promise_resolved @169ms readyState=loading {"ready_state_at_resolve":"loading","sr_props":{"[Amplitude] Session Replay ID":"sr-test-
+  sdk@375ms: Amplitude Logger [Log]: Session Replay capture beginning for 1793972154764.
+  sdk@9102ms: Amplitude Logger [Log]: Session replay event batch tracked successfully for session id 1793972154764, size of events: 0 KB
+  replay uploads: 6 (first at 8249ms, 1 events)
+  httpapi: page_view time=1793972154764 -> 200
+  httpapi: amplitude_session_replay time=1793972154921 -> 200
+  httpapi: page_timing time=1793972162784 -> 200
+  -> results/2a-slow-stay-sr-test-slow-1793972154764.json
+
+=== 2b-slow-leave #2  /?scenario=slow&leaveAt=3000
+[collect] page_view device=sr-test-slow-1793972175030 time=1793972175030 -> 200 {"code":200,"server_upload_time":1793972175189,"payload_size_bytes":394,"events_ingested":1}
+[collect] amplitude_session_replay device=sr-test-slow-1793972175030 time=1793972175186 -> 200 {"code":200,"server_upload_time":1793972175349,"payload_size_bytes":579,"events_ingested":1}
+  closed tab at 3250 ms
+  device=sr-test-slow-1793972175030 session=1793972175030
+  page 1: promise_resolved=167ms (loading)  amplitude_session_replay=167ms  DCL=3011ms  load=-
+  sdk@400ms: Amplitude Logger [Debug]: Session Replay remote configuration received from remote: {}
+  sdk@402ms: Amplitude Logger [Log]: Session Replay capture stopping.
+  sdk@403ms: Amplitude Logger [Debug]: Not able to add custom replay capture event get-sr-props due to no ongoing recording.
+  sdk@403ms: [repro] promise_resolved @167ms readyState=loading {"ready_state_at_resolve":"loading","sr_props":{"[Amplitude] Session Replay ID":"sr-test-
+  sdk@403ms: Amplitude Logger [Log]: Session Replay capture beginning for 1793972175030.
+  replay uploads: 0
+  httpapi: page_view time=1793972175030 -> 200
+  httpapi: amplitude_session_replay time=1793972175186 -> 200
+  -> results/2b-slow-leave-sr-test-slow-1793972175030.json
+
+=== 2c-slow-next #2  /?scenario=slow&leaveAt=3000&next=1
+[collect] page_view device=sr-test-slow-1793972178280 time=1793972178280 -> 200 {"code":200,"server_upload_time":1793972178438,"payload_size_bytes":401,"events_ingested":1}
+[collect] amplitude_session_replay device=sr-test-slow-1793972178280 time=1793972178451 -> 200 {"code":200,"server_upload_time":1793972178617,"payload_size_bytes":586,"events_ingested":1}
+[collect] page_view device=sr-test-slow-1793972178280 time=1793972181305 -> 200 {"code":200,"server_upload_time":1793972181463,"payload_size_bytes":391,"events_ingested":1}
+[collect] page_timing device=sr-test-slow-1793972178280 time=1793972181314 -> 200 {"code":200,"server_upload_time":1793972181480,"payload_size_bytes":507,"events_ingested":1}
+  device=sr-test-slow-1793972178280 session=1793972178280
+  page 1: promise_resolved=180ms (loading)  amplitude_session_replay=180ms  DCL=3022ms  load=-
+  page 2: promise_resolved=23ms (complete)  amplitude_session_replay=guard_blocked  DCL=21ms  load=21ms
+  sdk@342ms: Amplitude Logger [Debug]: Session Replay remote configuration received from remote: {}
+  sdk@344ms: Amplitude Logger [Log]: Session Replay capture stopping.
+  sdk@345ms: Amplitude Logger [Debug]: Not able to add custom replay capture event get-sr-props due to no ongoing recording.
+  sdk@345ms: [repro] promise_resolved @180ms readyState=loading {"ready_state_at_resolve":"loading","sr_props":{"[Amplitude] Session Replay ID":"sr-test-
+  sdk@345ms: Amplitude Logger [Log]: Session Replay capture beginning for 1793972178280.
+  sdk@3208ms: Amplitude Logger [Debug]: Session Replay remote configuration received from cache: {}
+  replay uploads: 6 (first at 3716ms, 6 events)
+  httpapi: page_view time=1793972178280 -> 200
+  httpapi: amplitude_session_replay time=1793972178451 -> 200
+  httpapi: page_view time=1793972181305 -> 200
+  httpapi: page_timing time=1793972181314 -> 200
+  -> results/2c-slow-next-sr-test-slow-1793972178280.json
+
+=== 3-slow-fix #2  /?scenario=slow&fix=1
+[collect] page_view device=sr-test-slow-1793972196515 time=1793972196515 -> 200 {"code":200,"server_upload_time":1793972196668,"payload_size_bytes":386,"events_ingested":1}
+[collect] page_timing device=sr-test-slow-1793972196515 time=1793972204536 -> 200 {"code":200,"server_upload_time":1793972204685,"payload_size_bytes":513,"events_ingested":1}
+[collect] amplitude_session_replay device=sr-test-slow-1793972196515 time=1793972204568 -> 200 {"code":200,"server_upload_time":1793972204726,"payload_size_bytes":573,"events_ingested":1}
+  device=sr-test-slow-1793972196515 session=1793972196515
+  page 1: promise_resolved=153ms (loading)  amplitude_session_replay=8061ms  DCL=3022ms  load=8009ms
+  sdk@355ms: Amplitude Logger [Debug]: Session Replay remote configuration received from remote: {}
+  sdk@358ms: Amplitude Logger [Log]: Session Replay capture stopping.
+  sdk@358ms: Amplitude Logger [Debug]: Not able to add custom replay capture event get-sr-props due to no ongoing recording.
+  sdk@358ms: [repro] promise_resolved @153ms readyState=loading {"ready_state_at_resolve":"loading","sr_props":{"[Amplitude] Session Replay ID":"sr-test-
+  sdk@358ms: Amplitude Logger [Log]: Session Replay capture beginning for 1793972196515.
+  sdk@9080ms: Amplitude Logger [Log]: Session replay event batch tracked successfully for session id 1793972196515, size of events: 0 KB
+  replay uploads: 6 (first at 8243ms, 1 events)
+  httpapi: page_view time=1793972196515 -> 200
+  httpapi: page_timing time=1793972204536 -> 200
+  httpapi: amplitude_session_replay time=1793972204568 -> 200
+  -> results/3-slow-fix-sr-test-slow-1793972196515.json
+
+=== 1-fast #3  /?scenario=fast
+[collect] page_view device=sr-test-fast-1793972216753 time=1793972216753 -> 200 {"code":200,"server_upload_time":1793972216903,"payload_size_bytes":380,"events_ingested":1}
+[collect] page_timing device=sr-test-fast-1793972216753 time=1793972216851 -> 200 {"code":200,"server_upload_time":1793972217016,"payload_size_bytes":500,"events_ingested":1}
+[collect] amplitude_session_replay device=sr-test-fast-1793972216753 time=1793972216901 -> 200 {"code":200,"server_upload_time":1793972217055,"payload_size_bytes":568,"events_ingested":1}
+  device=sr-test-fast-1793972216753 session=1793972216753
+  page 1: promise_resolved=155ms (complete)  amplitude_session_replay=155ms  DCL=104ms  load=104ms
+  sdk@360ms: Amplitude Logger [Debug]: Session Replay remote configuration received from remote: {}
+  sdk@363ms: Amplitude Logger [Log]: Session Replay capture stopping.
+  sdk@363ms: Amplitude Logger [Debug]: Not able to add custom replay capture event get-sr-props due to no ongoing recording.
+  sdk@363ms: [repro] promise_resolved @155ms readyState=complete {"ready_state_at_resolve":"complete","sr_props":{"[Amplitude] Session Replay ID":"sr-tes
+  sdk@364ms: Amplitude Logger [Log]: Session Replay capture beginning for 1793972216753.
+  sdk@2143ms: Amplitude Logger [Log]: Session replay event batch tracked successfully for session id 1793972216753, size of events: 4 KB
+  replay uploads: 6 (first at 1316ms, 6 events)
+  httpapi: page_view time=1793972216753 -> 200
+  httpapi: page_timing time=1793972216851 -> 200
+  httpapi: amplitude_session_replay time=1793972216901 -> 200
+  -> results/1-fast-sr-test-fast-1793972216753.json
+
+=== 2a-slow-stay #3  /?scenario=slow
+[collect] page_view device=sr-test-slow-1793972231991 time=1793972231991 -> 200 {"code":200,"server_upload_time":1793972232143,"payload_size_bytes":380,"events_ingested":1}
+[collect] amplitude_session_replay device=sr-test-slow-1793972231991 time=1793972232148 -> 200 {"code":200,"server_upload_time":1793972232308,"payload_size_bytes":566,"events_ingested":1}
+[collect] page_timing device=sr-test-slow-1793972231991 time=1793972240013 -> 200 {"code":200,"server_upload_time":1793972240162,"payload_size_bytes":506,"events_ingested":1}
+  device=sr-test-slow-1793972231991 session=1793972231991
+  page 1: promise_resolved=163ms (loading)  amplitude_session_replay=163ms  DCL=3021ms  load=8009ms
+  sdk@370ms: Amplitude Logger [Debug]: Session Replay remote configuration received from remote: {}
+  sdk@372ms: Amplitude Logger [Log]: Session Replay capture stopping.
+  sdk@373ms: Amplitude Logger [Debug]: Not able to add custom replay capture event get-sr-props due to no ongoing recording.
+  sdk@373ms: [repro] promise_resolved @163ms readyState=loading {"ready_state_at_resolve":"loading","sr_props":{"[Amplitude] Session Replay ID":"sr-test-
+  sdk@373ms: Amplitude Logger [Log]: Session Replay capture beginning for 1793972231991.
+  sdk@9247ms: Amplitude Logger [Log]: Session replay event batch tracked successfully for session id 1793972231991, size of events: 0 KB
+  replay uploads: 6 (first at 8247ms, 1 events)
+  httpapi: page_view time=1793972231991 -> 200
+  httpapi: amplitude_session_replay time=1793972232148 -> 200
+  httpapi: page_timing time=1793972240013 -> 200
+  -> results/2a-slow-stay-sr-test-slow-1793972231991.json
+
+=== 2b-slow-leave #3  /?scenario=slow&leaveAt=3000
+[collect] page_view device=sr-test-slow-1793972252185 time=1793972252185 -> 200 {"code":200,"server_upload_time":1793972252318,"payload_size_bytes":393,"events_ingested":1}
+[collect] amplitude_session_replay device=sr-test-slow-1793972252185 time=1793972252335 -> 200 {"code":200,"server_upload_time":1793972252498,"payload_size_bytes":579,"events_ingested":1}
+  closed tab at 3235 ms
+  device=sr-test-slow-1793972252185 session=1793972252185
+  page 1: promise_resolved=155ms (loading)  amplitude_session_replay=155ms  DCL=3024ms  load=-
+  sdk@320ms: Amplitude Logger [Debug]: Session Replay remote configuration received from remote: {}
+  sdk@322ms: Amplitude Logger [Log]: Session Replay capture stopping.
+  sdk@323ms: Amplitude Logger [Debug]: Not able to add custom replay capture event get-sr-props due to no ongoing recording.
+  sdk@323ms: [repro] promise_resolved @155ms readyState=loading {"ready_state_at_resolve":"loading","sr_props":{"[Amplitude] Session Replay ID":"sr-test-
+  sdk@323ms: Amplitude Logger [Log]: Session Replay capture beginning for 1793972252185.
+  replay uploads: 0
+  httpapi: page_view time=1793972252185 -> 200
+  httpapi: amplitude_session_replay time=1793972252335 -> 200
+  -> results/2b-slow-leave-sr-test-slow-1793972252185.json
+
+=== 2c-slow-next #3  /?scenario=slow&leaveAt=3000&next=1
+[collect] page_view device=sr-test-slow-1793972255444 time=1793972255444 -> 200 {"code":200,"server_upload_time":1793972255596,"payload_size_bytes":400,"events_ingested":1}
+[collect] amplitude_session_replay device=sr-test-slow-1793972255444 time=1793972255622 -> 200 {"code":200,"server_upload_time":1793972255785,"payload_size_bytes":586,"events_ingested":1}
+[collect] page_view device=sr-test-slow-1793972255444 time=1793972258503 -> 200 {"code":200,"server_upload_time":1793972258657,"payload_size_bytes":391,"events_ingested":1}
+[collect] page_timing device=sr-test-slow-1793972255444 time=1793972258512 -> 200 {"code":200,"server_upload_time":1793972258677,"payload_size_bytes":507,"events_ingested":1}
+  device=sr-test-slow-1793972255444 session=1793972255444
+  page 1: promise_resolved=186ms (loading)  amplitude_session_replay=186ms  DCL=3019ms  load=-
+  page 2: promise_resolved=57ms (complete)  amplitude_session_replay=guard_blocked  DCL=55ms  load=55ms
+  sdk@333ms: Amplitude Logger [Debug]: Session Replay remote configuration received from remote: {}
+  sdk@336ms: Amplitude Logger [Log]: Session Replay capture stopping.
+  sdk@336ms: Amplitude Logger [Debug]: Not able to add custom replay capture event get-sr-props due to no ongoing recording.
+  sdk@336ms: [repro] promise_resolved @186ms readyState=loading {"ready_state_at_resolve":"loading","sr_props":{"[Amplitude] Session Replay ID":"sr-test-
+  sdk@337ms: Amplitude Logger [Log]: Session Replay capture beginning for 1793972255444.
+  sdk@3225ms: Amplitude Logger [Debug]: Session Replay remote configuration received from cache: {}
+  replay uploads: 6 (first at 3739ms, 5 events)
+  httpapi: page_view time=1793972255444 -> 200
+  httpapi: amplitude_session_replay time=1793972255622 -> 200
+  httpapi: page_view time=1793972258503 -> 200
+  httpapi: page_timing time=1793972258512 -> 200
+  -> results/2c-slow-next-sr-test-slow-1793972255444.json
+
+=== 3-slow-fix #3  /?scenario=slow&fix=1
+[collect] page_view device=sr-test-slow-1793972273672 time=1793972273672 -> 200 {"code":200,"server_upload_time":1793972273824,"payload_size_bytes":386,"events_ingested":1}
+[collect] page_timing device=sr-test-slow-1793972273672 time=1793972281696 -> 200 {"code":200,"server_upload_time":1793972281846,"payload_size_bytes":513,"events_ingested":1}
+[collect] amplitude_session_replay device=sr-test-slow-1793972273672 time=1793972281728 -> 200 {"code":200,"server_upload_time":1793972281892,"payload_size_bytes":573,"events_ingested":1}
+  device=sr-test-slow-1793972273672 session=1793972273672
+  page 1: promise_resolved=186ms (loading)  amplitude_session_replay=8062ms  DCL=3022ms  load=8010ms
+  sdk@379ms: Amplitude Logger [Debug]: Session Replay remote configuration received from remote: {}
+  sdk@383ms: Amplitude Logger [Log]: Session Replay capture stopping.
+  sdk@384ms: Amplitude Logger [Debug]: Not able to add custom replay capture event get-sr-props due to no ongoing recording.
+  sdk@384ms: [repro] promise_resolved @186ms readyState=loading {"ready_state_at_resolve":"loading","sr_props":{"[Amplitude] Session Replay ID":"sr-test-
+  sdk@384ms: Amplitude Logger [Log]: Session Replay capture beginning for 1793972273672.
+  sdk@9065ms: Amplitude Logger [Log]: Session replay event batch tracked successfully for session id 1793972273672, size of events: 0 KB
+  replay uploads: 5 (first at 8237ms, 1 events)
+  httpapi: page_view time=1793972273672 -> 200
+  httpapi: page_timing time=1793972281696 -> 200
+  httpapi: amplitude_session_replay time=1793972281728 -> 200
+  -> results/3-slow-fix-sr-test-slow-1793972273672.json

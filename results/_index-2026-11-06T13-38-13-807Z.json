@@ -1,0 +1,107 @@
+[
+  {
+    "scenario": "1-fast",
+    "iteration": 1,
+    "deviceId": "sr-test-fast-1793972062308",
+    "sessionId": 1793972062308,
+    "started_at": "2026-11-06T13:34:22.059Z"
+  },
+  {
+    "scenario": "2a-slow-stay",
+    "iteration": 1,
+    "deviceId": "sr-test-slow-1793972077580",
+    "sessionId": 1793972077580,
+    "started_at": "2026-11-06T13:34:37.359Z"
+  },
+  {
+    "scenario": "2b-slow-leave",
+    "iteration": 1,
+    "deviceId": "sr-test-slow-1793972097789",
+    "sessionId": 1793972097789,
+    "started_at": "2026-11-06T13:34:57.606Z"
+  },
+  {
+    "scenario": "2c-slow-next",
+    "iteration": 1,
+    "deviceId": "sr-test-slow-1793972101009",
+    "sessionId": 1793972101009,
+    "started_at": "2026-11-06T13:35:00.865Z"
+  },
+  {
+    "scenario": "3-slow-fix",
+    "iteration": 1,
+    "deviceId": "sr-test-slow-1793972119194",
+    "sessionId": 1793972119194,
+    "started_at": "2026-11-06T13:35:19.030Z"
+  },
+  {
+    "scenario": "1-fast",
+    "iteration": 2,
+    "deviceId": "sr-test-fast-1793972139509",
+    "sessionId": 1793972139509,
+    "started_at": "2026-11-06T13:35:39.217Z"
+  },
+  {
+    "scenario": "2a-slow-stay",
+    "iteration": 2,
+    "deviceId": "sr-test-slow-1793972154764",
+    "sessionId": 1793972154764,
+    "started_at": "2026-11-06T13:35:54.546Z"
+  },
+  {
+    "scenario": "2b-slow-leave",
+    "iteration": 2,
+    "deviceId": "sr-test-slow-1793972175030",
+    "sessionId": 1793972175030,
+    "started_at": "2026-11-06T13:36:14.784Z"
+  },
+  {
+    "scenario": "2c-slow-next",
+    "iteration": 2,
+    "deviceId": "sr-test-slow-1793972178280",
+    "sessionId": 1793972178280,
+    "started_at": "2026-11-06T13:36:18.106Z"
+  },
+  {
+    "scenario": "3-slow-fix",
+    "iteration": 2,
+    "deviceId": "sr-test-slow-1793972196515",
+    "sessionId": 1793972196515,
+    "started_at": "2026-11-06T13:36:36.303Z"
+  },
+  {
+    "scenario": "1-fast",
+    "iteration": 3,
+    "deviceId": "sr-test-fast-1793972216753",
+    "sessionId": 1793972216753,
+    "started_at": "2026-11-06T13:36:56.538Z"
+  },
+  {
+    "scenario": "2a-slow-stay",
+    "iteration": 3,
+    "deviceId": "sr-test-slow-1793972231991",
+    "sessionId": 1793972231991,
+    "started_at": "2026-11-06T13:37:11.775Z"
+  },
+  {
+    "scenario": "2b-slow-leave",
+    "iteration": 3,
+    "deviceId": "sr-test-slow-1793972252185",
+    "sessionId": 1793972252185,
+    "started_at": "2026-11-06T13:37:32.012Z"
+  },
+  {
+    "scenario": "2c-slow-next",
+    "iteration": 3,
+    "deviceId": "sr-test-slow-1793972255444",
+    "sessionId": 1793972255444,
+    "started_at": "2026-11-06T13:37:35.286Z"
+  },
+  {
+    "scenario": "3-slow-fix",
+    "iteration": 3,
+    "deviceId": "sr-test-slow-1793972273672",
+    "sessionId": 1793972273672,
+    "started_at": "2026-11-06T13:37:53.468Z"
+  }
+]

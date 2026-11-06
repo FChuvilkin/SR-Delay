@@ -1,0 +1,248 @@
+{
+  "scenario": "2b-slow-leave",
+  "iteration": 2,
+  "url": "/?scenario=slow&leaveAt=3000",
+  "started_at": "2026-11-06T13:36:14.784Z",
+  "console": [
+    {
+      "ms": 254,
+      "type": "log",
+      "text": "[repro] collect:page_view @11ms readyState=loading {\"time\":1793972175030}"
+    },
+    {
+      "ms": 342,
+      "type": "log",
+      "text": "[repro] init_called @106ms readyState=loading"
+    },
+    {
+      "ms": 344,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Remote config localstorage gets null because the key does not exist"
+    },
+    {
+      "ms": 344,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Remote config client subscription all mode fetched from cache: {\"remoteConfig\":null,\"lastFetch\":\"2026-11-06T13:36:15.127Z\"}"
+    },
+    {
+      "ms": 344,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Remote config client skips sending callback because cache is empty (first time user)."
+    },
+    {
+      "ms": 400,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Remote config client subscription all mode fetched from remote: {\"remoteConfig\":{\"configs\":{\"diagnostics\":{\"browserSDK\":{\"sampleRate\":0.02}},\"sessionReplay\":{},\"analyticsSDK\":{}}},\"lastFetch\":\"2026-11-06T13:36:15.183Z\"}"
+    },
+    {
+      "ms": 400,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Session Replay remote configuration received from remote: {}"
+    },
+    {
+      "ms": 400,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Remote config localstorage set successfully."
+    },
+    {
+      "ms": 400,
+      "type": "log",
+      "text": "Amplitude Logger [Log]: Using idb for event storage."
+    },
+    {
+      "ms": 402,
+      "type": "log",
+      "text": "Amplitude Logger [Log]: Installing @amplitude/session-replay-browser."
+    },
+    {
+      "ms": 402,
+      "type": "log",
+      "text": "Amplitude Logger [Log]: Targeting config has not been set yet, cannot evaluate targeting."
+    },
+    {
+      "ms": 402,
+      "type": "log",
+      "text": "Amplitude Logger [Log]: Session Replay capture stopping."
+    },
+    {
+      "ms": 403,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Not able to add custom replay capture event get-sr-props due to no ongoing recording."
+    },
+    {
+      "ms": 403,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: {\n  \"type\": \"invoke public method\",\n  \"name\": \"getSessionReplayProperties\",\n  \"args\": [],\n  \"stacktrace\": [],\n  \"time\": {\n    \"start\": \"2026-11-06T13:36:15.186Z\",\n    \"end\": \"2026-11-06T13:36:15.186Z\"\n  },\n  \"states\": {}\n}"
+    },
+    {
+      "ms": 403,
+      "type": "log",
+      "text": "[repro] promise_resolved @167ms readyState=loading {\"ready_state_at_resolve\":\"loading\",\"sr_props\":{\"[Amplitude] Session Replay ID\":\"sr-test-slow-1793972175030/1793972175030\"}}"
+    },
+    {
+      "ms": 403,
+      "type": "log",
+      "text": "[repro] collect:amplitude_session_replay @167ms readyState=loading {\"time\":1793972175186}"
+    },
+    {
+      "ms": 403,
+      "type": "log",
+      "text": "Amplitude Logger [Log]: Session Replay capture beginning for 1793972175030."
+    },
+    {
+      "ms": 404,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Error while adding custom replay capture event:  Error: please add custom event after start recording"
+    },
+    {
+      "ms": 404,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Error while adding custom replay capture event:  Error: please add custom event after start recording"
+    },
+    {
+      "ms": 3248,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 3248,
+      "type": "log",
+      "text": "[repro] DOMContentLoaded @3011ms readyState=interactive"
+    }
+  ],
+  "network": [
+    {
+      "ms": 254,
+      "dir": "req",
+      "method": "POST",
+      "url": "http://localhost:4321/collect",
+      "event_type": "page_view",
+      "time": 1793972175030,
+      "ms_since_navigation": 11
+    },
+    {
+      "ms": 344,
+      "dir": "req",
+      "method": "GET",
+      "url": "https://sr-client-cfg.amplitude.com/config/<API_KEY_REDACTED>?config_group=browser"
+    },
+    {
+      "ms": 399,
+      "dir": "res",
+      "status": 200,
+      "url": "https://sr-client-cfg.amplitude.com/config/<API_KEY_REDACTED>?config_group=browser"
+    },
+    {
+      "ms": 403,
+      "dir": "req",
+      "method": "POST",
+      "url": "http://localhost:4321/collect",
+      "event_type": "amplitude_session_replay",
+      "time": 1793972175186,
+      "ms_since_navigation": 167
+    }
+  ],
+  "navigations": [
+    {
+      "ms": 245,
+      "url": "http://localhost:4321/?scenario=slow&leaveAt=3000"
+    }
+  ],
+  "page": {
+    "deviceId": "sr-test-slow-1793972175030",
+    "sessionId": 1793972175030,
+    "pageIndex": 1,
+    "marks": [
+      {
+        "name": "collect:page_view",
+        "ms": 11,
+        "readyState": "loading",
+        "t": 1793972175031,
+        "time": 1793972175030
+      },
+      {
+        "name": "init_called",
+        "ms": 106,
+        "readyState": "loading",
+        "t": 1793972175125
+      },
+      {
+        "name": "promise_resolved",
+        "ms": 167,
+        "readyState": "loading",
+        "t": 1793972175186,
+        "ready_state_at_resolve": "loading",
+        "sr_props": {
+          "[Amplitude] Session Replay ID": "sr-test-slow-1793972175030/1793972175030"
+        }
+      },
+      {
+        "name": "collect:amplitude_session_replay",
+        "ms": 167,
+        "readyState": "loading",
+        "t": 1793972175186,
+        "time": 1793972175186
+      },
+      {
+        "name": "DOMContentLoaded",
+        "ms": 3011,
+        "readyState": "interactive",
+        "t": 1793972178030
+      }
+    ],
+    "readyState": "interactive",
+    "previousPagesMarks": {}
+  },
+  "closed_at_ms": 3250,
+  "ended_at_ms": 3321,
+  "collect": [
+    {
+      "received_at": 1793972175039,
+      "forwarded_ms": 211,
+      "event": {
+        "event_type": "page_view",
+        "device_id": "sr-test-slow-1793972175030",
+        "session_id": 1793972175030,
+        "time": 1793972175030,
+        "insert_id": "468c75bd-018b-45d8-b1a3-402af3b71118",
+        "event_properties": {
+          "scenario": "slow",
+          "page_index": 1,
+          "page_url": "/?scenario=slow&leaveAt=3000",
+          "ms_since_navigation": 11,
+          "ready_state_at_send": "loading"
+        },
+        "platform": "Web"
+      },
+      "api_status": 200,
+      "api_response": "{\"code\":200,\"server_upload_time\":1793972175189,\"payload_size_bytes\":394,\"events_ingested\":1}",
+      "received_rel_ms": 255
+    },
+    {
+      "received_at": 1793972175188,
+      "forwarded_ms": 223,
+      "event": {
+        "event_type": "amplitude_session_replay",
+        "device_id": "sr-test-slow-1793972175030",
+        "session_id": 1793972175030,
+        "time": 1793972175186,
+        "insert_id": "e947d14e-b2d3-4a30-9421-96753336638f",
+        "event_properties": {
+          "scenario": "slow",
+          "page_index": 1,
+          "page_url": "/?scenario=slow&leaveAt=3000",
+          "ms_since_navigation": 167,
+          "ready_state_at_send": "loading",
+          "ready_state_at_resolve": "loading",
+          "ms_at_resolve": 167,
+          "sr_props": "{\"[Amplitude] Session Replay ID\":\"sr-test-slow-1793972175030/1793972175030\"}",
+          "fix_applied": false
+        },
+        "platform": "Web"
+      },
+      "api_status": 200,
+      "api_response": "{\"code\":200,\"server_upload_time\":1793972175349,\"payload_size_bytes\":579,\"events_ingested\":1}",
+      "received_rel_ms": 404
+    }
+  ]
+}

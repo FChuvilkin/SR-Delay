@@ -1,0 +1,13 @@
+{
+  "name": "sr-replay-timing-repro",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Reproduce late/missing Session Replay capture with the standalone SDK + HTTP V2 API",
+  "scripts": {
+    "server": "node server.js",
+    "run": "node run.js"
+  },
+  "dependencies": {
+    "playwright": "^1.65.0"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "compare",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["serve-compare.js"],
+      "port": 8080
+    }
+  ]
+}

@@ -1,0 +1,788 @@
+{
+  "scenario": "2c-slow-next",
+  "iteration": 2,
+  "url": "/?scenario=slow&leaveAt=3000&next=1",
+  "started_at": "2026-11-06T13:36:18.106Z",
+  "console": [
+    {
+      "ms": 178,
+      "type": "log",
+      "text": "[repro] collect:page_view @10ms readyState=loading {\"time\":1793972178280}"
+    },
+    {
+      "ms": 284,
+      "type": "log",
+      "text": "[repro] init_called @119ms readyState=loading"
+    },
+    {
+      "ms": 286,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Remote config localstorage gets null because the key does not exist"
+    },
+    {
+      "ms": 286,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Remote config client subscription all mode fetched from cache: {\"remoteConfig\":null,\"lastFetch\":\"2026-11-06T13:36:18.391Z\"}"
+    },
+    {
+      "ms": 286,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Remote config client skips sending callback because cache is empty (first time user)."
+    },
+    {
+      "ms": 342,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Remote config client subscription all mode fetched from remote: {\"remoteConfig\":{\"configs\":{\"diagnostics\":{\"browserSDK\":{\"sampleRate\":0.02}},\"sessionReplay\":{},\"analyticsSDK\":{}}},\"lastFetch\":\"2026-11-06T13:36:18.447Z\"}"
+    },
+    {
+      "ms": 342,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Session Replay remote configuration received from remote: {}"
+    },
+    {
+      "ms": 342,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Remote config localstorage set successfully."
+    },
+    {
+      "ms": 342,
+      "type": "log",
+      "text": "Amplitude Logger [Log]: Using idb for event storage."
+    },
+    {
+      "ms": 344,
+      "type": "log",
+      "text": "Amplitude Logger [Log]: Installing @amplitude/session-replay-browser."
+    },
+    {
+      "ms": 344,
+      "type": "log",
+      "text": "Amplitude Logger [Log]: Targeting config has not been set yet, cannot evaluate targeting."
+    },
+    {
+      "ms": 344,
+      "type": "log",
+      "text": "Amplitude Logger [Log]: Session Replay capture stopping."
+    },
+    {
+      "ms": 345,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Not able to add custom replay capture event get-sr-props due to no ongoing recording."
+    },
+    {
+      "ms": 345,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: {\n  \"type\": \"invoke public method\",\n  \"name\": \"getSessionReplayProperties\",\n  \"args\": [],\n  \"stacktrace\": [],\n  \"time\": {\n    \"start\": \"2026-11-06T13:36:18.450Z\",\n    \"end\": \"2026-11-06T13:36:18.451Z\"\n  },\n  \"states\": {}\n}"
+    },
+    {
+      "ms": 345,
+      "type": "log",
+      "text": "[repro] promise_resolved @180ms readyState=loading {\"ready_state_at_resolve\":\"loading\",\"sr_props\":{\"[Amplitude] Session Replay ID\":\"sr-test-slow-1793972178280/1793972178280\"}}"
+    },
+    {
+      "ms": 345,
+      "type": "log",
+      "text": "[repro] collect:amplitude_session_replay @180ms readyState=loading {\"time\":1793972178451}"
+    },
+    {
+      "ms": 345,
+      "type": "log",
+      "text": "Amplitude Logger [Log]: Session Replay capture beginning for 1793972178280."
+    },
+    {
+      "ms": 346,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Error while adding custom replay capture event:  Error: please add custom event after start recording"
+    },
+    {
+      "ms": 346,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Error while adding custom replay capture event:  Error: please add custom event after start recording"
+    },
+    {
+      "ms": 3187,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 3187,
+      "type": "log",
+      "text": "[repro] DOMContentLoaded @3022ms readyState=interactive"
+    },
+    {
+      "ms": 3187,
+      "type": "log",
+      "text": "[repro] navigating_next @3022ms readyState=interactive"
+    },
+    {
+      "ms": 3207,
+      "type": "log",
+      "text": "[repro] collect:page_view @12ms readyState=loading {\"time\":1793972181305}"
+    },
+    {
+      "ms": 3207,
+      "type": "log",
+      "text": "[repro] init_called @18ms readyState=loading"
+    },
+    {
+      "ms": 3208,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Remote config localstorage parsed successfully: {\"remoteConfig\":{\"configs\":{\"diagnostics\":{\"browserSDK\":{\"sampleRate\":0.02}},\"sessionReplay\":{},\"analyticsSDK\":{}}},\"lastFetch\":\"2026-11-06T13:36:18.447Z\"}"
+    },
+    {
+      "ms": 3208,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Remote config client subscription all mode fetched from cache: {\"remoteConfig\":{\"configs\":{\"diagnostics\":{\"browserSDK\":{\"sampleRate\":0.02}},\"sessionReplay\":{},\"analyticsSDK\":{}}},\"lastFetch\":\"2026-11-06T13:36:18.447Z\"}"
+    },
+    {
+      "ms": 3208,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Session Replay remote configuration received from cache: {}"
+    },
+    {
+      "ms": 3208,
+      "type": "log",
+      "text": "Amplitude Logger [Log]: Using idb for event storage."
+    },
+    {
+      "ms": 3209,
+      "type": "log",
+      "text": "[repro] DOMContentLoaded @21ms readyState=interactive"
+    },
+    {
+      "ms": 3209,
+      "type": "log",
+      "text": "[repro] load @21ms readyState=complete"
+    },
+    {
+      "ms": 3209,
+      "type": "log",
+      "text": "[repro] collect:page_timing @21ms readyState=complete {\"time\":1793972181314}"
+    },
+    {
+      "ms": 3213,
+      "type": "log",
+      "text": "Amplitude Logger [Log]: Installing @amplitude/session-replay-browser."
+    },
+    {
+      "ms": 3213,
+      "type": "log",
+      "text": "Amplitude Logger [Log]: Targeting config has not been set yet, cannot evaluate targeting."
+    },
+    {
+      "ms": 3213,
+      "type": "log",
+      "text": "Amplitude Logger [Log]: Session Replay capture stopping."
+    },
+    {
+      "ms": 3213,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Not able to add custom replay capture event get-sr-props due to no ongoing recording."
+    },
+    {
+      "ms": 3213,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: {\n  \"type\": \"invoke public method\",\n  \"name\": \"getSessionReplayProperties\",\n  \"args\": [],\n  \"stacktrace\": [],\n  \"time\": {\n    \"start\": \"2026-11-06T13:36:21.316Z\",\n    \"end\": \"2026-11-06T13:36:21.316Z\"\n  },\n  \"states\": {}\n}"
+    },
+    {
+      "ms": 3213,
+      "type": "log",
+      "text": "[repro] promise_resolved @23ms readyState=complete {\"ready_state_at_resolve\":\"complete\",\"sr_props\":{\"[Amplitude] Session Replay ID\":\"sr-test-slow-1793972178280/1793972178280\"}}"
+    },
+    {
+      "ms": 3213,
+      "type": "log",
+      "text": "[repro] guard_blocked @23ms readyState=complete {\"reason\":\"localStorage\"}"
+    },
+    {
+      "ms": 3213,
+      "type": "log",
+      "text": "Amplitude Logger [Log]: Session Replay capture beginning for 1793972178280."
+    },
+    {
+      "ms": 3213,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 3219,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 3222,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 3223,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 3223,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Remote config client subscription all mode fetched from remote: {\"remoteConfig\":{\"configs\":{\"diagnostics\":{\"browserSDK\":{\"sampleRate\":0.02}},\"sessionReplay\":{},\"analyticsSDK\":{}}},\"lastFetch\":\"2026-11-06T13:36:21.328Z\"}"
+    },
+    {
+      "ms": 3223,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Session Replay remote configuration received from remote: {}"
+    },
+    {
+      "ms": 3223,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Remote config localstorage set successfully."
+    },
+    {
+      "ms": 3223,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 3711,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 4211,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 4566,
+      "type": "log",
+      "text": "Amplitude Logger [Log]: Session replay event batch tracked successfully for session id 1793972178280, size of events: 4 KB"
+    },
+    {
+      "ms": 4710,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 4931,
+      "type": "log",
+      "text": "Amplitude Logger [Log]: Session replay event batch tracked successfully for session id 1793972178280, size of events: 2 KB"
+    },
+    {
+      "ms": 5211,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 5712,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 6211,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 6433,
+      "type": "log",
+      "text": "Amplitude Logger [Log]: Session replay event batch tracked successfully for session id 1793972178280, size of events: 3 KB"
+    },
+    {
+      "ms": 6711,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 7211,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 7712,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 8210,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 8712,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 8934,
+      "type": "log",
+      "text": "Amplitude Logger [Log]: Session replay event batch tracked successfully for session id 1793972178280, size of events: 4 KB"
+    },
+    {
+      "ms": 9212,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 9711,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 10210,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 10711,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 11211,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 11712,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 12135,
+      "type": "log",
+      "text": "Amplitude Logger [Log]: Session replay event batch tracked successfully for session id 1793972178280, size of events: 5 KB"
+    },
+    {
+      "ms": 12211,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 12712,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 13211,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 13713,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 14211,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 14711,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 15209,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 15421,
+      "type": "log",
+      "text": "Amplitude Logger [Log]: Session replay event batch tracked successfully for session id 1793972178280, size of events: 6 KB"
+    },
+    {
+      "ms": 15710,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 16210,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 16710,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 17212,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 17712,
+      "type": "log",
+      "text": "Amplitude Logger [Debug]: Enqueuing event for processing during idle time."
+    },
+    {
+      "ms": 18189,
+      "type": "log",
+      "text": "[repro] pagehide @15001ms readyState=complete"
+    }
+  ],
+  "network": [
+    {
+      "ms": 181,
+      "dir": "req",
+      "method": "POST",
+      "url": "http://localhost:4321/collect",
+      "event_type": "page_view",
+      "time": 1793972178280,
+      "ms_since_navigation": 10
+    },
+    {
+      "ms": 286,
+      "dir": "req",
+      "method": "GET",
+      "url": "https://sr-client-cfg.amplitude.com/config/<API_KEY_REDACTED>?config_group=browser"
+    },
+    {
+      "ms": 341,
+      "dir": "res",
+      "status": 200,
+      "url": "https://sr-client-cfg.amplitude.com/config/<API_KEY_REDACTED>?config_group=browser"
+    },
+    {
+      "ms": 345,
+      "dir": "req",
+      "method": "POST",
+      "url": "http://localhost:4321/collect",
+      "event_type": "amplitude_session_replay",
+      "time": 1793972178451,
+      "ms_since_navigation": 180
+    },
+    {
+      "ms": 3207,
+      "dir": "req",
+      "method": "POST",
+      "url": "http://localhost:4321/collect",
+      "event_type": "page_view",
+      "time": 1793972181305,
+      "ms_since_navigation": 12
+    },
+    {
+      "ms": 3208,
+      "dir": "req",
+      "method": "GET",
+      "url": "https://sr-client-cfg.amplitude.com/config/<API_KEY_REDACTED>?config_group=browser"
+    },
+    {
+      "ms": 3208,
+      "dir": "res",
+      "status": 200,
+      "url": "https://sr-client-cfg.amplitude.com/config/<API_KEY_REDACTED>?config_group=browser"
+    },
+    {
+      "ms": 3212,
+      "dir": "req",
+      "method": "POST",
+      "url": "http://localhost:4321/collect",
+      "event_type": "page_timing",
+      "time": 1793972181314,
+      "ms_since_navigation": 21
+    },
+    {
+      "ms": 3716,
+      "dir": "req",
+      "method": "POST",
+      "url": "https://api-sr.amplitude.com/sessions/v2/track?device_id=sr-test-slow-1793972178280&session_id=1793972178280&type=replay",
+      "events_count": 6,
+      "body_bytes": 3642
+    },
+    {
+      "ms": 4566,
+      "dir": "res",
+      "status": 200,
+      "url": "https://api-sr.amplitude.com/sessions/v2/track?device_id=sr-test-slow-1793972178280&session_id=1793972178280&type=replay"
+    },
+    {
+      "ms": 4722,
+      "dir": "req",
+      "method": "POST",
+      "url": "https://api-sr.amplitude.com/sessions/v2/track?device_id=sr-test-slow-1793972178280&session_id=1793972178280&type=replay",
+      "events_count": 2,
+      "body_bytes": 1539
+    },
+    {
+      "ms": 4931,
+      "dir": "res",
+      "status": 200,
+      "url": "https://api-sr.amplitude.com/sessions/v2/track?device_id=sr-test-slow-1793972178280&session_id=1793972178280&type=replay"
+    },
+    {
+      "ms": 6225,
+      "dir": "req",
+      "method": "POST",
+      "url": "https://api-sr.amplitude.com/sessions/v2/track?device_id=sr-test-slow-1793972178280&session_id=1793972178280&type=replay",
+      "events_count": 3,
+      "body_bytes": 2235
+    },
+    {
+      "ms": 6433,
+      "dir": "res",
+      "status": 200,
+      "url": "https://api-sr.amplitude.com/sessions/v2/track?device_id=sr-test-slow-1793972178280&session_id=1793972178280&type=replay"
+    },
+    {
+      "ms": 8725,
+      "dir": "req",
+      "method": "POST",
+      "url": "https://api-sr.amplitude.com/sessions/v2/track?device_id=sr-test-slow-1793972178280&session_id=1793972178280&type=replay",
+      "events_count": 5,
+      "body_bytes": 3867
+    },
+    {
+      "ms": 8934,
+      "dir": "res",
+      "status": 200,
+      "url": "https://api-sr.amplitude.com/sessions/v2/track?device_id=sr-test-slow-1793972178280&session_id=1793972178280&type=replay"
+    },
+    {
+      "ms": 11724,
+      "dir": "req",
+      "method": "POST",
+      "url": "https://api-sr.amplitude.com/sessions/v2/track?device_id=sr-test-slow-1793972178280&session_id=1793972178280&type=replay",
+      "events_count": 6,
+      "body_bytes": 4636
+    },
+    {
+      "ms": 12134,
+      "dir": "res",
+      "status": 200,
+      "url": "https://api-sr.amplitude.com/sessions/v2/track?device_id=sr-test-slow-1793972178280&session_id=1793972178280&type=replay"
+    },
+    {
+      "ms": 15212,
+      "dir": "req",
+      "method": "POST",
+      "url": "https://api-sr.amplitude.com/sessions/v2/track?device_id=sr-test-slow-1793972178280&session_id=1793972178280&type=replay",
+      "events_count": 7,
+      "body_bytes": 5058
+    },
+    {
+      "ms": 15420,
+      "dir": "res",
+      "status": 200,
+      "url": "https://api-sr.amplitude.com/sessions/v2/track?device_id=sr-test-slow-1793972178280&session_id=1793972178280&type=replay"
+    }
+  ],
+  "navigations": [
+    {
+      "ms": 173,
+      "url": "http://localhost:4321/?scenario=slow&leaveAt=3000&next=1"
+    },
+    {
+      "ms": 3197,
+      "url": "http://localhost:4321/?scenario=fast&from=slow"
+    }
+  ],
+  "page": {
+    "deviceId": "sr-test-slow-1793972178280",
+    "sessionId": 1793972178280,
+    "pageIndex": 2,
+    "marks": [
+      {
+        "name": "collect:page_view",
+        "ms": 12,
+        "readyState": "loading",
+        "t": 1793972181305,
+        "time": 1793972181305
+      },
+      {
+        "name": "init_called",
+        "ms": 18,
+        "readyState": "loading",
+        "t": 1793972181311
+      },
+      {
+        "name": "DOMContentLoaded",
+        "ms": 21,
+        "readyState": "interactive",
+        "t": 1793972181314
+      },
+      {
+        "name": "load",
+        "ms": 21,
+        "readyState": "complete",
+        "t": 1793972181314
+      },
+      {
+        "name": "collect:page_timing",
+        "ms": 21,
+        "readyState": "complete",
+        "t": 1793972181314,
+        "time": 1793972181314
+      },
+      {
+        "name": "promise_resolved",
+        "ms": 23,
+        "readyState": "complete",
+        "t": 1793972181316,
+        "ready_state_at_resolve": "complete",
+        "sr_props": {
+          "[Amplitude] Session Replay ID": "sr-test-slow-1793972178280/1793972178280"
+        }
+      },
+      {
+        "name": "guard_blocked",
+        "ms": 23,
+        "readyState": "complete",
+        "t": 1793972181316,
+        "reason": "localStorage"
+      }
+    ],
+    "readyState": "complete",
+    "previousPagesMarks": {
+      "sr_repro_marks_1": [
+        {
+          "name": "collect:page_view",
+          "ms": 10,
+          "readyState": "loading",
+          "t": 1793972178280,
+          "time": 1793972178280
+        },
+        {
+          "name": "init_called",
+          "ms": 119,
+          "readyState": "loading",
+          "t": 1793972178389
+        },
+        {
+          "name": "promise_resolved",
+          "ms": 180,
+          "readyState": "loading",
+          "t": 1793972178451,
+          "ready_state_at_resolve": "loading",
+          "sr_props": {
+            "[Amplitude] Session Replay ID": "sr-test-slow-1793972178280/1793972178280"
+          }
+        },
+        {
+          "name": "collect:amplitude_session_replay",
+          "ms": 180,
+          "readyState": "loading",
+          "t": 1793972178451,
+          "time": 1793972178451
+        },
+        {
+          "name": "DOMContentLoaded",
+          "ms": 3022,
+          "readyState": "interactive",
+          "t": 1793972181292
+        },
+        {
+          "name": "navigating_next",
+          "ms": 3022,
+          "readyState": "interactive",
+          "t": 1793972181293
+        },
+        {
+          "name": "pagehide",
+          "ms": 3030,
+          "readyState": "complete",
+          "t": 1793972181301
+        }
+      ]
+    }
+  },
+  "ended_at_ms": 18195,
+  "collect": [
+    {
+      "received_at": 1793972178289,
+      "forwarded_ms": 203,
+      "event": {
+        "event_type": "page_view",
+        "device_id": "sr-test-slow-1793972178280",
+        "session_id": 1793972178280,
+        "time": 1793972178280,
+        "insert_id": "7f1ac0f2-bd23-4322-9088-923be6b52815",
+        "event_properties": {
+          "scenario": "slow",
+          "page_index": 1,
+          "page_url": "/?scenario=slow&leaveAt=3000&next=1",
+          "ms_since_navigation": 10,
+          "ready_state_at_send": "loading"
+        },
+        "platform": "Web"
+      },
+      "api_status": 200,
+      "api_response": "{\"code\":200,\"server_upload_time\":1793972178438,\"payload_size_bytes\":401,\"events_ingested\":1}",
+      "received_rel_ms": 183
+    },
+    {
+      "received_at": 1793972178451,
+      "forwarded_ms": 228,
+      "event": {
+        "event_type": "amplitude_session_replay",
+        "device_id": "sr-test-slow-1793972178280",
+        "session_id": 1793972178280,
+        "time": 1793972178451,
+        "insert_id": "fc5488e6-7dd2-47bc-8164-c3686e8647d9",
+        "event_properties": {
+          "scenario": "slow",
+          "page_index": 1,
+          "page_url": "/?scenario=slow&leaveAt=3000&next=1",
+          "ms_since_navigation": 180,
+          "ready_state_at_send": "loading",
+          "ready_state_at_resolve": "loading",
+          "ms_at_resolve": 180,
+          "sr_props": "{\"[Amplitude] Session Replay ID\":\"sr-test-slow-1793972178280/1793972178280\"}",
+          "fix_applied": false
+        },
+        "platform": "Web"
+      },
+      "api_status": 200,
+      "api_response": "{\"code\":200,\"server_upload_time\":1793972178617,\"payload_size_bytes\":586,\"events_ingested\":1}",
+      "received_rel_ms": 345
+    },
+    {
+      "received_at": 1793972181311,
+      "forwarded_ms": 205,
+      "event": {
+        "event_type": "page_view",
+        "device_id": "sr-test-slow-1793972178280",
+        "session_id": 1793972178280,
+        "time": 1793972181305,
+        "insert_id": "9a6fc6e6-8a15-4d84-aeaa-82689269736d",
+        "event_properties": {
+          "scenario": "fast",
+          "page_index": 2,
+          "page_url": "/?scenario=fast&from=slow",
+          "ms_since_navigation": 12,
+          "ready_state_at_send": "loading"
+        },
+        "platform": "Web"
+      },
+      "api_status": 200,
+      "api_response": "{\"code\":200,\"server_upload_time\":1793972181463,\"payload_size_bytes\":391,\"events_ingested\":1}",
+      "received_rel_ms": 3205
+    },
+    {
+      "received_at": 1793972181316,
+      "forwarded_ms": 233,
+      "event": {
+        "event_type": "page_timing",
+        "device_id": "sr-test-slow-1793972178280",
+        "session_id": 1793972178280,
+        "time": 1793972181314,
+        "insert_id": "c096119f-65a2-4035-859e-120d5ba205d0",
+        "event_properties": {
+          "scenario": "fast",
+          "page_index": 2,
+          "page_url": "/?scenario=fast&from=slow",
+          "ms_since_navigation": 21,
+          "ready_state_at_send": "complete",
+          "dcl_ms": 21,
+          "load_ms": 21,
+          "promise_resolved_ms": null,
+          "ready_state_at_resolve": null,
+          "session_replay_event_ms": null
+        },
+        "platform": "Web"
+      },
+      "api_status": 200,
+      "api_response": "{\"code\":200,\"server_upload_time\":1793972181480,\"payload_size_bytes\":507,\"events_ingested\":1}",
+      "received_rel_ms": 3210
+    }
+  ]
+}

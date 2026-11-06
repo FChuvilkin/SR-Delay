@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session Replay timing repro</title>
+<script>
+(function () {
+  // --- Stand-in for Snowplow: IDs, page_view, timing marks -----------------
+  var q = new URLSearchParams(location.search);
+  var scenario = q.get('scenario') === 'slow' ? 'slow' : 'fast';
+  var T = window.__sr = {
+    scenario: scenario,
+    fix: q.get('fix') === '1',
+    leaveAt: Number(q.get('leaveAt') || 0),
+    next: q.get('next') === '1',
+    marks: [], collects: []
+  };
+  T.mark = function (name, extra) {
+    var m = Object.assign({ name: name, ms: Math.round(performance.now()), readyState: document.readyState, t: Date.now() }, extra || {});
+    T.marks.push(m);
+    console.log('[repro] ' + name + ' @' + m.ms + 'ms readyState=' + m.readyState + (extra ? ' ' + JSON.stringify(extra) : ''));
+    return m;
+  };
+  document.addEventListener('DOMContentLoaded', function () { T.mark('DOMContentLoaded'); });
+  window.addEventListener('load', function () { T.mark('load'); });
+  // Keep this page's marks for the runner even after navigating away (scenario 2c).
+  window.addEventListener('pagehide', function () {
+    T.mark('pagehide');
+    try { sessionStorage.setItem('sr_repro_marks_' + T.pageIndex, JSON.stringify(T.marks)); } catch (e) {}
+  });
+
+  // Snowplow domain_userid / session_id equivalents. sessionStorage keeps them across the "next page" step.
+  var deviceId = sessionStorage.getItem('sr_repro_device_id');
+  var sessionId = Number(sessionStorage.getItem('sr_repro_session_id'));
+  if (!deviceId || !sessionId) {
+    deviceId = 'sr-test-' + scenario + '-' + Date.now();
+    sessionId = Date.now();
+    sessionStorage.setItem('sr_repro_device_id', deviceId);
+    sessionStorage.setItem('sr_repro_session_id', String(sessionId));
+  }
+  T.deviceId = deviceId; T.sessionId = sessionId;
+  T.pageIndex = Number(sessionStorage.getItem('sr_repro_page_index') || 0) + 1;
+  sessionStorage.setItem('sr_repro_page_index', String(T.pageIndex));
+
+  // Snowplow -> server-side GTM -> HTTP V2 API, collapsed into one call to /collect.
+  T.collect = function (eventType, props) {
+    var payload = {
+      event_type: eventType, device_id: deviceId, session_id: sessionId, time: Date.now(),
+      insert_id: (crypto.randomUUID ? crypto.randomUUID() : String(Math.random())),
+      event_properties: Object.assign({
+        scenario: scenario, page_index: T.pageIndex, page_url: location.pathname + location.search,
+        ms_since_navigation: Math.round(performance.now()), ready_state_at_send: document.readyState
+      }, props || {})
+    };
+    T.collects.push(payload);
+    T.mark('collect:' + eventType, { time: payload.time });
+    try {
+      fetch('/collect', { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }).catch(function () {});
+    } catch (e) {}
+    return payload;
+  };
+
+  // 1. page_view is sent immediately, before the replay SDK runs.
+  T.collect('page_view', {});
+
+  // Scenario 2c: "user clicks through" to the next page at leaveAt ms.
+  if (T.next && T.leaveAt > 0) {
+    setTimeout(function () { T.mark('navigating_next'); location.href = '/?scenario=fast&from=' + scenario; }, T.leaveAt);
+  }
+})();
+</script>
+<script src="https://cdn.amplitude.com/libs/session-replay-browser-1.31.4-min.js.gz"></script>
+<script>
+(function () {
+  // --- The customer's GTM tag, verbatim apart from: key/URLs templated, logLevel, and
+  //     /collect instead of dataLayer.push (plus debug properties). ------------------
+  var T = window.__sr;
+  var deviceId = T.deviceId;
+  var sessionId = T.sessionId;
+  if (!window.sessionReplay || typeof window.sessionReplay.init !== "function") { T.mark('sdk_missing'); return; }
+  T.mark('init_called');
+  window.sessionReplay.init("__API_KEY__", {
+    deviceId: deviceId,
+    sessionId: sessionId,
+    sampleRate: 1,
+    trackServerUrl: "__TRACK_URL__",
+    configServerUrl: "__CONFIG_URL__",
+    logLevel: 4
+  }).promise.then(function () {
+    var readyStateAtResolve = document.readyState;
+    var msAtResolve = Math.round(performance.now());
+    var srProps = null;
+    try { srProps = window.sessionReplay.getSessionReplayProperties(); } catch (e) { srProps = { error: String(e) }; }
+    T.mark('promise_resolved', { ready_state_at_resolve: readyStateAtResolve, sr_props: srProps });
+
+    function sendSyntheticEvent() {
+      if (!deviceId || !sessionId || deviceId === "undefined" || sessionId === "undefined") return;
+      var replayKey = "amplitude_replay_event_" + deviceId + "_" + sessionId;
+      try {
+        if (localStorage.getItem(replayKey) === "sent") { T.mark('guard_blocked', { reason: 'localStorage' }); return; }
+      } catch (error) { return; }
+      if (window.amplitudeReplayEventSent) { T.mark('guard_blocked', { reason: 'window_flag' }); return; }
+      try { localStorage.setItem(replayKey, "sent"); } catch (error) { return; }
+      window.amplitudeReplayEventSent = true;
+      // customer: window.dataLayer.push({event: "struct_analytics_event", ...}) -> Snowplow -> HTTP API
+      T.collect('amplitude_session_replay', {
+        ready_state_at_resolve: readyStateAtResolve,
+        ms_at_resolve: msAtResolve,
+        sr_props: JSON.stringify(srProps),
+        fix_applied: T.fix
+      });
+    }
+
+    if (T.fix && readyStateAtResolve === 'loading') {
+      // Scenario 3 fix: recording cannot have started yet, wait for window "load" (+50 ms).
+      T.mark('fix_waiting_for_load');
+      window.addEventListener('load', function () { setTimeout(sendSyntheticEvent, 50); });
+    } else {
+      sendSyntheticEvent();
+    }
+  }).catch(function (e) { T.mark('promise_rejected', { error: String(e) }); });
+})();
+</script>
+<!--HOLD-->
+</head>
+<body>
+<h1>Session Replay timing repro</h1>
+<p id="info"></p>
+<p>Scenario: <strong id="scenario"></strong></p>
+__SLOW_IMG__
+<ul id="marks"></ul>
+<script>
+(function () {
+  var T = window.__sr;
+  document.getElementById('scenario').textContent = T.scenario + (T.fix ? ' + fix' : '');
+  document.getElementById('info').textContent = 'device ' + T.deviceId + ' / session ' + T.sessionId + ' / page ' + T.pageIndex;
+  function renderMarks() {
+    var ul = document.getElementById('marks'); ul.innerHTML = '';
+    T.marks.forEach(function (m) { var li = document.createElement('li'); li.textContent = m.ms + ' ms  ' + m.name + '  (' + m.readyState + ')'; ul.appendChild(li); });
+  }
+  renderMarks(); setInterval(renderMarks, 500);
+  window.addEventListener('load', function () {
+    var find = function (n) { return T.marks.find(function (m) { return m.name === n; }); };
+    var dcl = find('DOMContentLoaded'), pr = find('promise_resolved'), sr = find('collect:amplitude_session_replay');
+    T.collect('page_timing', {
+      dcl_ms: dcl ? dcl.ms : null, load_ms: Math.round(performance.now()),
+      promise_resolved_ms: pr ? pr.ms : null, ready_state_at_resolve: pr ? pr.ready_state_at_resolve : null,
+      session_replay_event_ms: sr ? sr.ms : null
+    });
+  });
+})();
+</script>
+</body>
+</html>
